@@ -1,6 +1,8 @@
- import { assert, expect } from 'chai';
- // import { expect } from 'chai';
+ // import { assert, expect } from 'chai';
+ // // import { expect } from 'chai';
  import Trie from "../lib/Trie";
+ var assert = require('chai').assert;
+ var expect = require('chai').assert;
 
   describe('Trie', () => {
     let trie;
@@ -11,10 +13,6 @@
     it('should be a function', () => {
       assert.isFunction(Trie);
     });
-
-    // it('should start with zero elements', () => {
-    //   assert.equal(children.length, 0);
-    // });
     
     it('should set its default root to null', () => {
     assert.equal(trie.root, null);
@@ -27,16 +25,49 @@
     trie = new Trie();
     })
  
-  it('should take a word as an argument', () => {
-    assert.equal(trie.insert('word'));
+  it('should be able to track number of inserts', () => {
+    trie.insert('word')
+    assert.equal(trie.count(),1);
 
   });
-  it('should change word to all lowercase', () => {
-    assert.equal(trie.insert('word'));
-
+  it('should not count same words in different case', () => {
+    trie.insert('word')
+    trie.insert('WoRd')
+    assert.equal(trie.count(), 1);
   })
-  // it('the word should be split into an array', () => {
-  //   // expect(trie.insert('word').to.be.any(['w', 'o', 'r', 'd']))
-  //   assert.isArray(trie.insert('word'))
-  // });
+
  })
+
+   describe('Suggest', () => {
+    let trie;
+    beforeEach(() => {
+    trie = new Trie();
+    })
+    it('should be able to suggest a word in the tree', () => {
+      trie.insert('word')
+      assert.equal(trie.suggest('wo')[0], 'word');
+    });
+    it('should return words with the same prefixes', () => {
+      trie.insert('word')
+      trie.insert('world')
+     assert.deepEqual(trie.suggest('wo'), ['word', 'world']);
+    });
+     it('root node should be able to have mutiple children', () => {
+      trie.insert('apple')
+      trie.insert('orange')
+     assert.deepEqual(trie.suggest('a'), ['apple']);
+     assert.deepEqual(trie.suggest('o'), ['orange']);
+    })
+  })
+   
+   describe('Populate', () => {
+    let trie;
+    beforeEach(() => {
+    trie = new Trie();
+    })
+    it('should be able to take an array of words and insert into trie', () => {
+      trie.populate(['word', 'fish', 'pasta'])
+      assert.equal(trie.count(), 3);
+    });
+    
+  })
