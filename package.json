@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "@lkshamus/completeme",
   "version": "1.0.0",
-  "description": "",
+  "description": "autocomplete system",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -12,7 +12,7 @@
     "start": "webpack",
     "eslint": "./node_modules/eslint/bin/eslint.js ./lib/*.js"
   },
-  "author": "",
+  "author": "Laura Shamus",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
@@ -28,5 +28,13 @@
     "style-loader": "^0.22.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lkshamus/complete-me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lkshamus/complete-me/issues"
+  },
+  "homepage": "https://github.com/lkshamus/complete-me#readme"
 }
