@@ -4,7 +4,6 @@
 
 Auto complete tool made with a Prefix Trie. 
 
-To use 
-
+To use: 
 ```` npm i @lkshamus/completeme ````
 
